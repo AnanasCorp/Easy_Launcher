@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 
 class Login extends Component {
 
@@ -15,7 +16,28 @@ class Login extends Component {
 
     async handleLogin() {
         if(this.state.email && this.state.password) {
-            console.log('TODO: login')
+            const settings = {
+                method: 'POST',
+                headers: {
+                    mode: 'no-cors',
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    mail: this.state.email,
+                    pass: this.state.password
+                })
+            };
+            const response = await fetch('http://localhost:5000/loginUser', settings)
+            const userData = await response.json()
+            
+            if (!userData.user) {
+                console.log('error when logging in')
+            } else {
+                console.log(userData.user)
+                sessionStorage.setItem('userData', JSON.stringify(userData.user))
+                this.setState({ redirect: true })
+            }
         }
     }
 
@@ -24,6 +46,10 @@ class Login extends Component {
     }
 
     render() {
+        if (this.state.redirect) {
+            return(<Redirect to={'/'}/>)
+        }
+
         return (
             <div className="login">
                 <label htmlFor="email">email</label>

@@ -8,14 +8,24 @@ class Home extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            user: null,
             redirect: false
         }
+        this.handleLogout = this.handleLogout.bind(this)
     }
 
     componentWillMount() {
-        sessionStorage.getItem('userData') ?
-            console.log('is ok') :
+        if (!sessionStorage.getItem('userData')) {
             this.setState({ redirect: true })
+        } else {
+            const userData = JSON.parse(sessionStorage.getItem('userData'))
+            this.setState({ user: userData })
+        }
+    }
+
+    handleLogout() {
+        sessionStorage.removeItem('userData')
+        this.setState({ redirect: true })
     }
 
     render() {
@@ -25,8 +35,9 @@ class Home extends Component {
 
         return(
             <div className="Home">
-                <h1>home</h1>
+                <h1>home, welcome {this.state.user.uid}</h1>
                 <img src={logo} alt="logo"/>
+                <button id="logout" onClick={this.handleLogout}>log out</button>
             </div>
         )
     }
