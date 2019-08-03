@@ -11,7 +11,14 @@ class Login extends Component {
             redirect: false
         }
         this.handleLogin = this.handleLogin.bind(this)
+        this.handleGoRegister = this.handleGoRegister.bind(this)
         this.onChange = this.onChange.bind(this)
+    }
+
+    componentWillMount() {
+        if (sessionStorage.getItem('userData')) {
+            this.setState({ redirect: true })
+        }
     }
 
     async handleLogin() {
@@ -41,6 +48,10 @@ class Login extends Component {
         }
     }
 
+    handleGoRegister() {
+        this.props.history.push('/register')
+    }
+
     onChange(e) {
         this.setState({[e.target.name]: e.target.value})
     }
@@ -54,9 +65,12 @@ class Login extends Component {
             <div className="login">
                 <label htmlFor="email">email</label>
                 <input type="email" id="email" name="email" placeholder="test@example.com" onChange={this.onChange}/>
+                <br/>
                 <label htmlFor="password">password</label>
-                <input type="password" id="password" name="password" onChange={this.onChange}/>
-                <button id="submit" type="submit" onClick={this.handleLogin}>Submit</button>
+                <input type="password" id="password" name="password" placeholder="******" onChange={this.onChange}/>
+                <br/>
+                <button id="login" type="submit" onClick={this.handleLogin}>Login</button>
+                <button id="register" onClick={this.handleGoRegister}>Register</button>
             </div>
         )
     }

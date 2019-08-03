@@ -35,7 +35,7 @@ class Home extends Component {
 
         return(
             <div className="Home">
-                <h1>home, welcome {this.state.user.uid}</h1>
+                <h1>home, welcome {this.state.user.displayName}</h1>
                 <img src={logo} alt="logo"/>
                 <button id="logout" onClick={this.handleLogout}>log out</button>
             </div>
