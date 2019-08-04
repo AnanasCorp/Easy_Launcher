@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 
+import Loading from '../components/Loading/'
+
 class Register extends Component {
 
     constructor(props) {
@@ -10,7 +12,8 @@ class Register extends Component {
             email: '',
             password: '',
             confirmpwd: '',
-            redirect: false
+            redirect: false,
+            loading: false
         }
         this.handleRegister = this.handleRegister.bind(this)
         this.handleGoBack = this.handleGoBack.bind(this)
@@ -26,6 +29,7 @@ class Register extends Component {
     async handleRegister() {
         if (this.state.username && this.state.email && this.state.password && this.state.confirmpwd) {
             if (this.state.password === this.state.confirmpwd) {
+                this.setState({ loading: true })
                 const settings = {
                     method: 'POST',
                     headers: {
@@ -48,6 +52,7 @@ class Register extends Component {
                     console.log(registerStatus.success)
                     this.handleGoBack()
                 }
+                this.setState({ loading: false })
             }
         }
     }
@@ -66,21 +71,31 @@ class Register extends Component {
         }
 
         return (
-            <div className="register">
-                <label htmlFor="username">username</label>
-                <input type="text" id="username" name="username" placeholder="John Doe" onChange={this.onChange}/>
-                <br/>
-                <label htmlFor="email">email</label>
-                <input type="email" id="email" name="email" placeholder="test@example.com" onChange={this.onChange}/>
-                <br/>
-                <label htmlFor="password">password</label>
-                <input type="password" id="password" name="password" placeholder="******" onChange={this.onChange}/>
-                <br/>
-                <label htmlFor="confirmpwd">confirm password</label>
-                <input type="password" id="confirmpwd" name="confirmpwd" placeholder="******" onChange={this.onChange}/>
-                <br/>
-                <button id="login" type="submit" onClick={this.handleRegister}>Register</button>
-                <button id="register" onClick={this.handleGoBack}>Back</button>
+            <div className="Register">
+                <h1>Register</h1>
+                <div className="form">
+                    <div className="inputs">
+                        <div className="field">
+                            <label htmlFor="username">username</label>
+                            <input type="text" id="username" name="username" placeholder="John Doe" onChange={this.onChange}/>
+                        </div>
+                        <div className="field">
+                            <label htmlFor="email">email</label>
+                            <input type="email" id="email" name="email" placeholder="test@example.com" onChange={this.onChange}/>
+                        </div>
+                        <div className="field">
+                            <label htmlFor="password">password</label>
+                            <input type="password" id="password" name="password" placeholder="******" onChange={this.onChange}/>
+                        </div>
+                        <div className="field">
+                            <label htmlFor="confirmpwd">confirm password</label>
+                            <input type="password" id="confirmpwd" name="confirmpwd" placeholder="******" onChange={this.onChange}/>
+                        </div>
+                    </div>
+                    <button id="login" type="submit" onClick={this.handleRegister}>Register</button>
+                    <button id="register" onClick={this.handleGoBack}>Back</button>
+                    <Loading isLoading={this.state.loading}/>
+                </div>
             </div>
         )
     }

@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 
+import Loading from '../components/Loading/'
+
 class Login extends Component {
 
     constructor(props) {
@@ -8,7 +10,8 @@ class Login extends Component {
         this.state = {
             email: '',
             password: '',
-            redirect: false
+            redirect: false,
+            loading: false
         }
         this.handleLogin = this.handleLogin.bind(this)
         this.handleGoRegister = this.handleGoRegister.bind(this)
@@ -23,6 +26,7 @@ class Login extends Component {
 
     async handleLogin() {
         if(this.state.email && this.state.password) {
+            this.setState({ loading: true })
             const settings = {
                 method: 'POST',
                 headers: {
@@ -45,6 +49,7 @@ class Login extends Component {
                 sessionStorage.setItem('userData', JSON.stringify(userData.user))
                 this.setState({ redirect: true })
             }
+            this.setState({ loading: false })
         }
     }
 
@@ -62,15 +67,23 @@ class Login extends Component {
         }
 
         return (
-            <div className="login">
-                <label htmlFor="email">email</label>
-                <input type="email" id="email" name="email" placeholder="test@example.com" onChange={this.onChange}/>
-                <br/>
-                <label htmlFor="password">password</label>
-                <input type="password" id="password" name="password" placeholder="******" onChange={this.onChange}/>
-                <br/>
-                <button id="login" type="submit" onClick={this.handleLogin}>Login</button>
-                <button id="register" onClick={this.handleGoRegister}>Register</button>
+            <div className="Login">
+                <h1>Login</h1>
+                <div className="form">
+                    <div className="inputs">
+                        <div className="field">
+                            <label htmlFor="email">email</label>
+                            <input type="email" id="email" name="email" placeholder="test@example.com" onChange={this.onChange}/>
+                        </div>
+                        <div className="field">
+                            <label htmlFor="password">password</label>
+                            <input type="password" id="password" name="password" placeholder="******" onChange={this.onChange}/>
+                        </div>
+                    </div>
+                    <button id="login" type="submit" onClick={this.handleLogin}>Login</button>
+                    <button id="register" onClick={this.handleGoRegister}>Register</button>
+                    <Loading isLoading={this.state.loading}/>
+                </div>
             </div>
         )
     }

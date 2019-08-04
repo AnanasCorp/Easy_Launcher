@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 
-import logo from '../logo.svg';
+import logo from '../img/logo.svg';
 
 class Home extends Component {
 
@@ -35,8 +35,9 @@ class Home extends Component {
 
         return(
             <div className="Home">
-                <h1>home, welcome {this.state.user.displayName}</h1>
-                <img src={logo} alt="logo"/>
+                <h1>Home</h1>
+                <img className="home-logo" src={logo} alt="logo"/>
+                <p>welcome {this.state.user.displayName}</p>
                 <button id="logout" onClick={this.handleLogout}>log out</button>
             </div>
         )
