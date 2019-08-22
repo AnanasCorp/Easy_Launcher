@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 
-import Loading from '../components/Loading/'
+import LoadingSpinner from '../components/LoadingSpinner/'
 
 class Register extends Component {
 
@@ -94,7 +94,7 @@ class Register extends Component {
                     </div>
                     <button id="login" type="submit" onClick={this.handleRegister}>Register</button>
                     <button id="register" onClick={this.handleGoBack}>Back</button>
-                    <Loading isLoading={this.state.loading}/>
+                    {this.state.loading && <LoadingSpinner />}
                 </div>
             </div>
         )
