@@ -1,10 +1,10 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-import Home from './pages/Home'
-import Login from './pages/Login'
-import Register from './pages/Register'
 import './App.scss'
+import Home from './pages/js/Home'
+import Login from './pages/js/Login'
+import Register from './pages/js/Register'
 
 
 const App = () => (

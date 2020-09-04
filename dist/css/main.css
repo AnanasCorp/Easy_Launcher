@@ -1,0 +1,8 @@
+.App h1{display:block;text-align:center;margin-bottom:32px}.App p{margin-bottom:16px}.App .form{width:300px;margin:0 auto}.App .form .inputs{width:100%;margin-bottom:10px}.App .form .inputs .field{width:100%;display:flex;justify-content:space-between}
+
+html{background-color:#161616}.Home{color:white}
+
+.loading-wheel{display:block;width:50px;margin:16px auto 0;animation:spin;animation-direction:reverse;animation-iteration-count:infinite;animation-timing-function:linear;animation-duration:1.5s}@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
+@tailwind base;@tailwind components;@tailwind utilities;body{margin:0;padding:0 16px;font-family:"Times New Roman"}h1,p{margin:0;padding:0}code{font-family:source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace}
+

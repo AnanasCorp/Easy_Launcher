@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 
-import logo from '../img/logo.svg';
+import '../scss/Home.scss';
 
 class Home extends Component {
 
@@ -34,11 +34,14 @@ class Home extends Component {
         }
 
         return(
-            <div className="Home">
-                <h1>Home</h1>
-                <img className="home-logo" src={logo} alt="logo"/>
-                <p>welcome {this.state.user.displayName}</p>
-                <button id="logout" onClick={this.handleLogout}>log out</button>
+            <div>
+                <header className="flex justify-end">
+                    <p>{this.state.user.displayName}</p> 
+                    <button id="logout" onClick={this.handleLogout}>log out</button>
+                </header>
+                <div className="Home">
+                    <h1>Home</h1>
+                </div>
             </div>
         )
     }
