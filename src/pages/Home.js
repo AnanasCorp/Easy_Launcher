@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 
+import { Layout } from '../components'
 import logo from '../img/logo.svg';
 
 class Home extends Component {
@@ -35,10 +36,11 @@ class Home extends Component {
 
         return(
             <div className="Home">
-                <h1>Home</h1>
-                <img className="home-logo" src={logo} alt="logo"/>
-                <p>welcome {this.state.user.displayName}</p>
-                <button id="logout" onClick={this.handleLogout}>log out</button>
+                <Layout>
+                    <h1>Home</h1>
+                    <p>welcome {this.state.user.displayName}</p>
+                    <button id="logout" onClick={this.handleLogout}>log out</button>
+                </Layout>
             </div>
         )
     }
