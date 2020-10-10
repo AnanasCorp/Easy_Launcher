@@ -43,7 +43,7 @@ class Register extends Component {
                         username: this.state.username
                     })
                 };
-                const response = await fetch('http://localhost:5000/createUser', settings)
+                const response = await fetch(`${process.env.REACT_APP_API_URL}/createUser`, settings)
                 const registerStatus = await response.json()
                 
                 if (!registerStatus.success) {

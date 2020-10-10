@@ -39,7 +39,7 @@ class Login extends Component {
                     pass: this.state.password
                 })
             };
-            const response = await fetch('http://localhost:5000/loginUser', settings)
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/loginUser`, settings)
             const userData = await response.json()
             
             if (!userData.user) {
