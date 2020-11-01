@@ -1,8 +1,8 @@
-$primary: #fff;
-$secondary:  #000;
-$white: #fff;
 $gray: #9b9b9b;
 $gray-dark: #161616;
+$primary: #fff;
+$secondary:  $gray-dark;
+$white: #fff;
 
 html, 
 body {
@@ -42,12 +42,6 @@ h1 {
         font-size: 1.3rem;
         cursor: text;
         top: 20px;
-    }
-
-    &:input:-internal-autofill-selected {
-        background-color: $gray-dark;
-        background-image: none !important;
-        color: $white !important;
     }
 }
 
