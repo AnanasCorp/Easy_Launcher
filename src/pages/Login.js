@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
+import './Login.scss'
 
 import LoadingSpinner from '../components/LoadingSpinner/'
 
@@ -71,17 +72,23 @@ class Login extends Component {
                 <h1>Login</h1>
                 <div className="form">
                     <div className="inputs">
-                        <div className="field">
-                            <label htmlFor="email">email</label>
-                            <input type="email" id="email" name="email" placeholder="test@example.com" onChange={this.onChange}/>
+                        <div className="form__group field">
+                            <input className="form__field" type="email" id="email" name="email" placeholder="test@example.com" onChange={this.onChange}/>
+                            <label className="form__label" htmlFor="email">Email</label>
                         </div>
-                        <div className="field">
-                            <label htmlFor="password">password</label>
-                            <input type="password" id="password" name="password" placeholder="******" onChange={this.onChange}/>
+                        <div className="form__group field field">
+                            <input className="form__field" type="password" id="password" name="password" placeholder="******" onChange={this.onChange}/>
+                            <label className="form__label" htmlFor="password">Password</label>
                         </div>
                     </div>
-                    <button id="login" type="submit" onClick={this.handleLogin}>Login</button>
-                    <button id="register" onClick={this.handleGoRegister}>Register</button>
+                    <div className="btn-container">
+                        <button className="button" id="login" type="submit" onClick={this.handleLogin}>
+                            <span>Login</span>
+                        </button>
+                        <button className="button" id="register" onClick={this.handleGoRegister}>
+                            <span>Register</span>
+                        </button>
+                    </div>
                     {this.state.loading && <LoadingSpinner/>}
                 </div>
             </div>
