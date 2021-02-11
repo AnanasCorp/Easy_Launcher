@@ -1,6 +1,6 @@
 import React from 'react'
 
-import logo from '../../img/logo.svg';
+import logo from '../../img/ico.png';
 
 import { MenuTitle, NavItem, NavList, NavContainer } from './styles'
 
