@@ -1,14 +1,14 @@
 import styled from 'styled-components'
 
-import NavItem from './NavItem'
+import ShortcutItem from './ShortcutItem'
 
-const NavList = styled('div')`
+const ShortcutList = styled('div')`
   border-top: 1px solid #333;
   margin-bottom: 2rem;
 
-  ${NavItem} {
+  ${ShortcutItem} {
     border-bottom: 1px solid #333;
   }
 `
 
-export default NavList
+export default ShortcutList

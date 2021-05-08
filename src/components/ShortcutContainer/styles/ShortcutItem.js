@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-const Tab = styled(Link)`
+const Shortcut = styled(Link)`
   color: inherit;
   display: block;
   padding: 16px 16px 16px 20px;
@@ -14,4 +14,4 @@ const Tab = styled(Link)`
   }
 `
 
-export default Tab
+export default Shortcut

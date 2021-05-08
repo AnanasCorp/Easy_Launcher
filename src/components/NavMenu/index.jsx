@@ -27,8 +27,10 @@ const NavMenu = () => {
 
   return (
     <NavContainer>
-      <img className="home-logo" src={logo} alt="logo"/>
-      <MenuTitle>Easy Launcher</MenuTitle>
+      <a href="/">
+        <img className="home-logo" src={logo} alt="logo"/>
+        <MenuTitle>Easy Launcher</MenuTitle>
+      </a>
       <NavList>
         {tabs.map(tab => (
           <NavItem to={`/onglet/${tab.name}`}>{tab.name}</NavItem>
