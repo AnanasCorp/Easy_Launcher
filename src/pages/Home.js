@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom'
 
 import { Layout } from '../components'
 import logo from '../img/logo.svg';
+import './Home.scss'
 
 class Home extends Component {
 
@@ -39,8 +40,8 @@ class Home extends Component {
                 <Layout>
                     <h1>Home</h1>
                     <p>welcome {this.state.user.displayName}</p>
-                    <button id="logout" onClick={this.handleLogout}>log out</button>
                 </Layout>
+                <button id="logout" onClick={this.handleLogout}>log out</button>
             </div>
         )
     }

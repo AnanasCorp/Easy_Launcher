@@ -40,11 +40,11 @@ const AddTab = () => {
     <AddTabContainer>
       {isFormVisible ? (
         <form onSubmit={handleSubmit} method="POST">
-          <button onClick={handleHideForm}>x</button>
-          <input type="text" name="tabName" id="tabName" placeholder="tab name" ref={inputRef}/>
-          <button disabled={inputRef.current?.value !== undefined} type='submit'>create tab</button>
+          <button className="cancel-tab-btn" onClick={handleHideForm}>x</button>
+          <input className="add-tab-input" type="text" name="tabName" id="tabName" placeholder="Tab name" ref={inputRef}/>
+          <button className="create-tab-btn" disabled={inputRef.current?.value !== undefined} type='submit'>Create</button>
         </form>
-      ) : <button onClick={handleDisplayForm}>+</button>}
+      ) : <button className="add-tab-btn" onClick={handleDisplayForm}>+</button>}
     
     </AddTabContainer>
   )
