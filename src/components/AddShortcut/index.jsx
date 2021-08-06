@@ -22,10 +22,10 @@ const AddShortcut = () => {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ 
-        name: inputName.current.value, 
-        ico: inputIconSrc.current.value,
+        desc: inputName.current.value, 
+        icon: inputIconSrc.current.value,
         link: inputLink.current.value,
-        tab: tab, 
+        tab: tab.id,
         uid: userData.uid })
     };
     const response = await fetch(`${process.env.REACT_APP_API_URL}/addShortcut`, requestOptions);

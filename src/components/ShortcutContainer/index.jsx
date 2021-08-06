@@ -7,7 +7,7 @@ import { ShortcutItem, ShortcutList } from './styles'
 const ShortcutContainer = () => {
   //TODO : gérer les tabs dans un context
   const tab = useParams()
-  const [shortcuts, setShortcuts] = useState([])
+  const [shortcuts, setShortcuts] = useState({})
   const userData = JSON.parse(sessionStorage.getItem('userData'))
 
   const fetchShortcuts = useCallback(async () => {
@@ -15,20 +15,21 @@ const ShortcutContainer = () => {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' }
     };
-    const response = await fetch(`${process.env.REACT_APP_API_URL}/getShortcuts/${userData.uid}/${tab}`, requestOptions);
-    const data = await response.json()
 
-    setShortcuts(data)
-  }, [])
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/getShortcuts/${userData.uid}/${tab.id}`, requestOptions);
+    return response.json()    
+  });
 
   useEffect(() => {
-    fetchShortcuts()
+    fetchShortcuts().then(data => {
+      setShortcuts(data);
+    })
   }, [])
 
   return (
     <ShortcutList>
-      {shortcuts.map(sc => (
-        <ShortcutItem>{sc.name}</ShortcutItem>
+      {Object.entries(shortcuts).map((sc) => (
+        <ShortcutItem location={sc[1].link}>{sc[1].desc}</ShortcutItem>
       ))}
       <AddShortcut tab={tab} />
     </ShortcutList>
