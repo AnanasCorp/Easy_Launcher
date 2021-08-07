@@ -24,7 +24,7 @@ const ShortcutContainer = () => {
     fetchShortcuts().then(data => {
       setShortcuts(data);
     })
-  }, [])
+  }, [tab])
 
   return (
     <ShortcutList>
