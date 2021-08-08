@@ -26,10 +26,41 @@ const ShortcutContainer = () => {
     })
   }, [tab])
 
+  const handleClickEdit = () => {
+    document.querySelectorAll('.shortcut-remove-btn').forEach((sc) => {
+      sc.classList.toggle('active');
+    })
+    console.log('edit');
+  }
+
+  const removeShortcut = (e) => {
+    const id = e.target.closest('[data-id]').dataset.id;
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ 
+        uid: userData.uid,
+        sid: id})
+    };
+    fetch(`${process.env.REACT_APP_API_URL}/removeShortcut`, requestOptions);
+  }
+
+  const openLink = (e) => {
+    const url = e.target.dataset.url;
+    window.open(url,'_blank');
+  }
+
   return (
     <ShortcutList>
+      <button class="edit-shortcuts" onClick={handleClickEdit}>edit</button>
       {Object.entries(shortcuts).map((sc) => (
-        <ShortcutItem location={sc[1].link}>{sc[1].desc}</ShortcutItem>
+        <ShortcutItem data-id={sc[0]}>
+          <div data-url={sc[1].link} onClick={openLink}>
+            <img src={`https://s2.googleusercontent.com/s2/favicons?domain_url=${sc[1].link}`}/>
+            {sc[1].desc}
+          </div>
+          <button class="shortcut-remove-btn" onClick={removeShortcut}>x</button>
+          </ShortcutItem>
       ))}
       <AddShortcut tab={tab} />
     </ShortcutList>

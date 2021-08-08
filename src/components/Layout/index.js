@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
   return (
     <LayoutContainer>
       <NavMenu />
-      <ContentContainer>
+      <ContentContainer className="content">
         {children}      
       </ContentContainer>
     </LayoutContainer>

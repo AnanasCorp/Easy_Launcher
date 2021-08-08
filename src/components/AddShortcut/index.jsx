@@ -5,7 +5,6 @@ import { AddShortcutContainer } from './styles'
 
 const AddShortcut = () => {
   const inputName = useRef()
-  const inputIconSrc = useRef()
   const inputLink = useRef()
   const tab = useParams()
   const [isFormVisible, setFormVisible] = useState(false)
@@ -22,8 +21,7 @@ const AddShortcut = () => {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ 
-        desc: inputName.current.value, 
-        icon: inputIconSrc.current.value,
+        desc: inputName.current.value,
         link: inputLink.current.value,
         tab: tab.id,
         uid: userData.uid })
@@ -50,9 +48,8 @@ const AddShortcut = () => {
       {isFormVisible ? (
         <form onSubmit={handleSubmit} method="POST">
           <button className="cancel-tab-btn" onClick={handleHideForm}>x</button>
-          <input className="add-tab-input" type="text" name="tabName" id="tabName" placeholder="Tab name" ref={inputName}/>
-          <input className="add-tab-input" type="text" name="tabName" id="tabName" placeholder="Tab name" ref={inputIconSrc}/>
-          <input className="add-tab-input" type="text" name="tabName" id="tabName" placeholder="Tab name" ref={inputLink}/>
+          <input className="add-tab-input" type="text" name="name" id="name" placeholder="Name" ref={inputName}/>
+          <input className="add-tab-input" type="text" name="link" id="link" placeholder="Link" ref={inputLink}/>
           <button className="create-tab-btn" disabled={inputName.current?.value !== undefined} type='submit'>Create</button>
         </form>
       ) : <button className="add-tab-btn" onClick={handleDisplayForm}>+</button>}

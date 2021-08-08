@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 
 import { Layout } from '../components'
-import logo from '../img/logo.svg';
 import './Home.scss'
 
 class Home extends Component {

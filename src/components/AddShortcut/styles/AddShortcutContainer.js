@@ -12,7 +12,7 @@ const AddShortcutContainer = styled('div')`
   .add-tab-btn {
     display: block;
     width: 150px;
-    margin: 2rem auto 0;
+    margin: .5rem;
     border: 1px solid #333;
     border-radius: 24px;
     font-size: 32px;

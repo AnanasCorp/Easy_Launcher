@@ -1,13 +1,16 @@
 import styled from 'styled-components'
 
-import ShortcutItem from './ShortcutItem'
-
 const ShortcutList = styled('div')`
-  border-top: 1px solid #333;
-  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 80%;
+  margin: 1rem;
 
-  ${ShortcutItem} {
-    border-bottom: 1px solid #333;
+  .edit-shortcuts {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
   }
 `
 
