@@ -52,7 +52,7 @@ const ShortcutContainer = () => {
 
   return (
     <ShortcutList>
-      <button class="edit-shortcuts" onClick={handleClickEdit}>edit</button>
+      <button class="edit-shortcuts" onClick={handleClickEdit}>Edit</button>
       {Object.entries(shortcuts).map((sc) => (
         <ShortcutItem data-id={sc[0]}>
           <div data-url={sc[1].link} onClick={openLink}>
