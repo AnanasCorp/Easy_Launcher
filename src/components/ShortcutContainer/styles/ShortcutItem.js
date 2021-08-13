@@ -1,12 +1,14 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-const Tab = styled(Link)`
+const Shortcut = styled(Link)`
   position: relative;
   color: inherit;
   display: block;
-  padding: 16px 16px 16px 20px;
-  border-bottom: 1px solid #333;
+  padding: 16px 16px 16px 4px;
+  margin: .5rem;
+  border: 1px solid #333;
+  border-radius: 16px;
   text-decoration: none;
 
   &:hover {
@@ -14,7 +16,11 @@ const Tab = styled(Link)`
     cursor: pointer;
   }
 
-  .tab-remove-btn {
+  img {
+    margin: 0 .5rem -.2rem;
+  }
+
+  .shortcut-remove-btn {
     display: none;
     position: absolute;
     top: 0;
@@ -29,4 +35,4 @@ const Tab = styled(Link)`
   }
 `
 
-export default Tab
+export default Shortcut

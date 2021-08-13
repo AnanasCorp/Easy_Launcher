@@ -4,6 +4,8 @@ import './Login.scss'
 
 import LoadingSpinner from '../components/LoadingSpinner/'
 
+const utils = require('../utils')
+
 class Register extends Component {
 
     constructor(props) {
@@ -22,7 +24,7 @@ class Register extends Component {
     }
 
     componentWillMount() {
-        if (sessionStorage.getItem('userData')) {
+        if (utils.getCookie('userData')) {
             this.setState({ redirect: true })
         }
     }

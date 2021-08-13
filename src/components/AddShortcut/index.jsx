@@ -1,26 +1,33 @@
 import React, { useCallback, useRef, useState } from 'react'
-
-import { AddTabContainer } from './styles'
+import { useParams } from 'react-router'
+import { AddShortcutContainer } from './styles'
 
 const utils = require('../../utils')
 
-const AddTab = () => {
-  const inputRef = useRef()
+const AddShortcut = () => {
+  const inputName = useRef()
+  const inputLink = useRef()
+  const tab = useParams()
   const [isFormVisible, setFormVisible] = useState(false)
 
   const handleSubmit = useCallback(async e => {
     e.preventDefault()
-
-    if (!inputRef.current.value) return 
+    
+    if (!inputName.current.value) return 
 
     const userData = JSON.parse(utils.getCookie('userData'))
+    console.log(userData)
 
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: inputRef.current.value, uid: userData.uid })
+      body: JSON.stringify({ 
+        desc: inputName.current.value,
+        link: inputLink.current.value,
+        tab: tab.id,
+        uid: userData.uid })
     };
-    const response = await fetch(`${process.env.REACT_APP_API_URL}/addTab`, requestOptions);
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/addShortcut`, requestOptions);
     const data = await response.json()
 
     if (data.success) {
@@ -28,27 +35,28 @@ const AddTab = () => {
       // plus tard ce sera gérer par un context / un truc qui va rerender la list automatiquement
       window.location.reload()
     } else {
-      console.error('error when adding tab')
+      console.error('error when adding shortcut')
     }
 
     handleHideForm()
-  }, [inputRef])
+  }, [inputName])
 
   const handleDisplayForm = useCallback(() => setFormVisible(true), [setFormVisible])
   const handleHideForm = useCallback(() => setFormVisible(false), [setFormVisible])
 
   return (
-    <AddTabContainer>
+    <AddShortcutContainer>
       {isFormVisible ? (
         <form onSubmit={handleSubmit} method="POST">
           <button className="cancel-tab-btn" onClick={handleHideForm}>x</button>
-          <input className="add-tab-input" type="text" name="tabName" id="tabName" placeholder="Tab name" ref={inputRef}/>
-          <button className="create-tab-btn" disabled={inputRef.current?.value !== undefined} type='submit'>Create</button>
+          <input className="add-tab-input" type="text" name="name" id="name" placeholder="Name" ref={inputName}/>
+          <input className="add-tab-input" type="text" name="link" id="link" placeholder="Link" ref={inputLink}/>
+          <button className="create-tab-btn" disabled={inputName.current?.value !== undefined} type='submit'>Create</button>
         </form>
       ) : <button className="add-tab-btn" onClick={handleDisplayForm}>+</button>}
     
-    </AddTabContainer>
+    </AddShortcutContainer>
   )
 }
 
-export default AddTab
+export default AddShortcut
