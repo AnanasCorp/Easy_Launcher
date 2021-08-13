@@ -2,6 +2,8 @@ import React, { useCallback, useRef, useState } from 'react'
 
 import { AddTabContainer } from './styles'
 
+const utils = require('../../utils')
+
 const AddTab = () => {
   const inputRef = useRef()
   const [isFormVisible, setFormVisible] = useState(false)
@@ -11,8 +13,7 @@ const AddTab = () => {
 
     if (!inputRef.current.value) return 
 
-    const userData = JSON.parse(sessionStorage.getItem('userData'))
-    console.log(userData)
+    const userData = JSON.parse(utils.getCookie('userData'))
 
     const requestOptions = {
       method: 'POST',

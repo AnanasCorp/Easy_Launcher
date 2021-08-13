@@ -4,11 +4,13 @@ import AddShortcut from '../AddShortcut'
 
 import { ShortcutItem, ShortcutList } from './styles'
 
+const utils = require('../../utils')
+
 const ShortcutContainer = () => {
   //TODO : gérer les tabs dans un context
   const tab = useParams()
   const [shortcuts, setShortcuts] = useState({})
-  const userData = JSON.parse(sessionStorage.getItem('userData'))
+  const userData = JSON.parse(utils.getCookie('userData'))
 
   const fetchShortcuts = useCallback(async () => {
     const requestOptions = {

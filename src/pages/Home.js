@@ -4,6 +4,8 @@ import { Redirect } from 'react-router-dom'
 import { Layout } from '../components'
 import './Home.scss'
 
+const utils = require('../utils')
+
 class Home extends Component {
 
     constructor(props) {
@@ -16,16 +18,16 @@ class Home extends Component {
     }
 
     componentWillMount() {
-        if (!sessionStorage.getItem('userData')) {
+        if (!utils.getCookie('userData')) {
             this.setState({ redirect: true })
         } else {
-            const userData = JSON.parse(sessionStorage.getItem('userData'))
+            const userData = JSON.parse(utils.getCookie('userData'))
             this.setState({ user: userData })
         }
     }
 
     handleLogout() {
-        sessionStorage.removeItem('userData')
+        utils.eraseCookie('userData')
         this.setState({ redirect: true })
     }
 

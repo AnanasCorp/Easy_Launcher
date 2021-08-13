@@ -9,6 +9,12 @@ const TabContainer = styled('div')`
         text-decoration: none;
         color: white;
     }
+
+    .edit-tabs {
+        position: absolute;
+        bottom: 1rem;
+        left: 1rem;
+    }
 `
 
 export default TabContainer

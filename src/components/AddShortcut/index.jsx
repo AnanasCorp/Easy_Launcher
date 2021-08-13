@@ -1,7 +1,8 @@
 import React, { useCallback, useRef, useState } from 'react'
 import { useParams } from 'react-router'
-
 import { AddShortcutContainer } from './styles'
+
+const utils = require('../../utils')
 
 const AddShortcut = () => {
   const inputName = useRef()
@@ -14,7 +15,7 @@ const AddShortcut = () => {
     
     if (!inputName.current.value) return 
 
-    const userData = JSON.parse(sessionStorage.getItem('userData'))
+    const userData = JSON.parse(utils.getCookie('userData'))
     console.log(userData)
 
     const requestOptions = {

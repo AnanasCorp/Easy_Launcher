@@ -4,6 +4,8 @@ import './Login.scss'
 
 import LoadingSpinner from '../components/LoadingSpinner/'
 
+const utils = require('../utils')
+
 class Login extends Component {
 
     constructor(props) {
@@ -20,7 +22,7 @@ class Login extends Component {
     }
 
     componentWillMount() {
-        if (sessionStorage.getItem('userData')) {
+        if (utils.getCookie('userData')) {
             this.setState({ redirect: true })
         }
     }
@@ -47,7 +49,7 @@ class Login extends Component {
                 console.log('error when logging in')
             } else {
                 console.log(userData.user)
-                sessionStorage.setItem('userData', JSON.stringify(userData.user))
+                utils.setCookie('userData', JSON.stringify(userData.user), 60) // 60 days expiration
                 this.setState({ redirect: true })
             }
             this.setState({ loading: false })
