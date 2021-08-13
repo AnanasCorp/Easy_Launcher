@@ -1,6 +1,16 @@
 .App {
     /* general */
 
+    $gray-dark: #161616;
+    $white: #ffffff;
+
+    html, 
+    body {
+        height: 100vh;
+        background-color: $gray-dark;
+        color: $white;
+    }
+
     h1 {
         display: block;
         text-align: center;
@@ -13,8 +23,8 @@
 
     .home-logo {
         display: block;
-        margin: 0 auto 32px;
-        width: 150px;
+        margin: 12px auto;
+        width: 50px;
     }
 
     /* forms */

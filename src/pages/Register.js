@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
+import './Login.scss'
 
 import LoadingSpinner from '../components/LoadingSpinner/'
+
+const utils = require('../utils')
 
 class Register extends Component {
 
@@ -21,7 +24,7 @@ class Register extends Component {
     }
 
     componentWillMount() {
-        if (sessionStorage.getItem('userData')) {
+        if (utils.getCookie('userData')) {
             this.setState({ redirect: true })
         }
     }
@@ -75,25 +78,29 @@ class Register extends Component {
                 <h1>Register</h1>
                 <div className="form">
                     <div className="inputs">
-                        <div className="field">
-                            <label htmlFor="username">username</label>
-                            <input type="text" id="username" name="username" placeholder="John Doe" onChange={this.onChange}/>
+                        <div className="form__group field">
+                            <input className="form__field" type="text" id="username" name="username" placeholder="John Doe" onChange={this.onChange}/>
+                            <label className="form__label" htmlFor="username">username</label>
                         </div>
-                        <div className="field">
-                            <label htmlFor="email">email</label>
-                            <input type="email" id="email" name="email" placeholder="test@example.com" onChange={this.onChange}/>
+                        <div className="form__group field">
+                            <input className="form__field" type="email" id="email" name="email" placeholder="test@example.com" onChange={this.onChange}/>
+                            <label className="form__label" htmlFor="email">email</label>
                         </div>
-                        <div className="field">
-                            <label htmlFor="password">password</label>
-                            <input type="password" id="password" name="password" placeholder="******" onChange={this.onChange}/>
+                        <div className="form__group field">
+                            <input className="form__field" type="password" id="password" name="password" placeholder="******" onChange={this.onChange}/>
+                            <label className="form__label" htmlFor="password">password</label>
                         </div>
-                        <div className="field">
-                            <label htmlFor="confirmpwd">confirm password</label>
-                            <input type="password" id="confirmpwd" name="confirmpwd" placeholder="******" onChange={this.onChange}/>
+                        <div className="form__group field">
+                            <input className="form__field" type="password" id="confirmpwd" name="confirmpwd" placeholder="******" onChange={this.onChange}/>
+                            <label className="form__label" htmlFor="confirmpwd">confirm password</label>
                         </div>
                     </div>
-                    <button id="login" type="submit" onClick={this.handleRegister}>Register</button>
-                    <button id="register" onClick={this.handleGoBack}>Back</button>
+                    <button className="button" id="login" type="submit" onClick={this.handleRegister}>
+                        <span>Register</span>
+                    </button>
+                    <button className="button" id="register" onClick={this.handleGoBack}>
+                        <span>Back</span>
+                    </button>
                     {this.state.loading && <LoadingSpinner />}
                 </div>
             </div>

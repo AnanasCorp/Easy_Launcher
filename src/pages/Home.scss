@@ -1,0 +1,16 @@
+.Home {
+position: relative;
+
+    #logout {
+        position: absolute;
+        top: 0;
+        right: 0;
+        border: 0;
+        padding: 0.5rem 2rem;
+        color: #ccc;
+        text-decoration: underline;
+        background-color: transparent;
+        box-shadow: none;
+        cursor: pointer;
+    }
+}

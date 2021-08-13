@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 
 import { Layout } from '../components'
-import logo from '../img/logo.svg';
+import './Home.scss'
+
+const utils = require('../utils')
 
 class Home extends Component {
 
@@ -16,16 +18,16 @@ class Home extends Component {
     }
 
     componentWillMount() {
-        if (!sessionStorage.getItem('userData')) {
+        if (!utils.getCookie('userData')) {
             this.setState({ redirect: true })
         } else {
-            const userData = JSON.parse(sessionStorage.getItem('userData'))
+            const userData = JSON.parse(utils.getCookie('userData'))
             this.setState({ user: userData })
         }
     }
 
     handleLogout() {
-        sessionStorage.removeItem('userData')
+        utils.eraseCookie('userData')
         this.setState({ redirect: true })
     }
 
@@ -39,8 +41,8 @@ class Home extends Component {
                 <Layout>
                     <h1>Home</h1>
                     <p>welcome {this.state.user.displayName}</p>
-                    <button id="logout" onClick={this.handleLogout}>log out</button>
                 </Layout>
+                <button id="logout" onClick={this.handleLogout}>log out</button>
             </div>
         )
     }
