@@ -32,10 +32,9 @@ const ShortcutContainer = () => {
     document.querySelectorAll('.shortcut-remove-btn').forEach((sc) => {
       sc.classList.toggle('active');
     })
-    console.log('edit');
   }
 
-  const removeShortcut = (e) => {
+  const removeShortcut = async (e) => {
     const id = e.target.closest('[data-id]').dataset.id;
     const requestOptions = {
       method: 'POST',
@@ -44,7 +43,8 @@ const ShortcutContainer = () => {
         uid: userData.uid,
         sid: id})
     };
-    fetch(`${process.env.REACT_APP_API_URL}/removeShortcut`, requestOptions);
+    const remove = await fetch(`${process.env.REACT_APP_API_URL}/removeShortcut`, requestOptions);
+    window.location.reload();
   }
 
   const openLink = (e) => {
