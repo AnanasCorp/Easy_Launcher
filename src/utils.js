@@ -26,6 +26,6 @@ module.exports = {
   },
 
  getServerUrl() {
-     return 'https://easy-launcher.herokuapp.com/'
+     return 'https://easy-launcher.herokuapp.com'
  }
 }
