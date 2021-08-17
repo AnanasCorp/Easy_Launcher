@@ -10,7 +10,7 @@ import './App.scss'
 
 const App = () => (
     <div className="App">
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
             <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/login" component={Login} />
