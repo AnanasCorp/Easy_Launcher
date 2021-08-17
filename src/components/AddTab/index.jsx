@@ -20,7 +20,7 @@ const AddTab = () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name: inputRef.current.value, uid: userData.uid })
     };
-    const response = await fetch(`${getServerUrl().REACT_APP_API_URL}/addTab`, requestOptions);
+    const response = await fetch(`${utils.getServerUrl().REACT_APP_API_URL}/addTab`, requestOptions);
     const data = await response.json()
 
     if (data.success) {

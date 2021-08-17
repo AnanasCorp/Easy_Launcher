@@ -18,7 +18,7 @@ const ShortcutContainer = () => {
       headers: { 'Content-Type': 'application/json' }
     };
 
-    const response = await fetch(`${getServerUrl().REACT_APP_API_URL}/getShortcuts/${userData.uid}/${tab.id}`, requestOptions);
+    const response = await fetch(`${utils.getServerUrl().REACT_APP_API_URL}/getShortcuts/${userData.uid}/${tab.id}`, requestOptions);
     return response.json()    
   });
 
@@ -43,7 +43,7 @@ const ShortcutContainer = () => {
         uid: userData.uid,
         sid: id})
     };
-    const remove = await fetch(`${getServerUrl().REACT_APP_API_URL}/removeShortcut`, requestOptions);
+    const remove = await fetch(`${utils.getServerUrl().REACT_APP_API_URL}/removeShortcut`, requestOptions);
     window.location.reload();
   }
 
