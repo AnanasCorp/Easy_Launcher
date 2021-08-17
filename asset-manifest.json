@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/Easy_Launcher/static/css/main.16d619e8.chunk.css",
+    "main.js": "/Easy_Launcher/static/js/main.404a00c7.chunk.js",
+    "main.js.map": "/Easy_Launcher/static/js/main.404a00c7.chunk.js.map",
+    "runtime-main.js": "/Easy_Launcher/static/js/runtime-main.84787a15.js",
+    "runtime-main.js.map": "/Easy_Launcher/static/js/runtime-main.84787a15.js.map",
+    "static/js/2.109c876e.chunk.js": "/Easy_Launcher/static/js/2.109c876e.chunk.js",
+    "static/js/2.109c876e.chunk.js.map": "/Easy_Launcher/static/js/2.109c876e.chunk.js.map",
+    "index.html": "/Easy_Launcher/index.html",
+    "static/css/main.16d619e8.chunk.css.map": "/Easy_Launcher/static/css/main.16d619e8.chunk.css.map",
+    "static/js/2.109c876e.chunk.js.LICENSE.txt": "/Easy_Launcher/static/js/2.109c876e.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.84787a15.js",
+    "static/js/2.109c876e.chunk.js",
+    "static/css/main.16d619e8.chunk.css",
+    "static/js/main.404a00c7.chunk.js"
+  ]
+}
