@@ -17,7 +17,7 @@ const NavMenu = () => {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' }
     };
-    const response = await fetch(`${utils.getServerUrl()}/getTabs/${userData.uid}`, requestOptions);
+    const response = await fetch(`${utils.getServerUrl()}getTabs/${userData.uid}`, requestOptions);
     const data = await response.json()
 
     setTabs(data)
@@ -43,7 +43,7 @@ const NavMenu = () => {
         uid: userData.uid,
         tid: id})
     };
-    fetch(`${utils.getServerUrl()}/removeTab`, requestOptions);
+    fetch(`${utils.getServerUrl()}removeTab`, requestOptions);
     window.location.reload() 
   }
 

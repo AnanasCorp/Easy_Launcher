@@ -46,7 +46,7 @@ class Register extends Component {
                         username: this.state.username
                     })
                 };
-                const response = await fetch(`${utils.getServerUrl()}/createUser`, settings)
+                const response = await fetch(`${utils.getServerUrl()}createUser`, settings)
                 const registerStatus = await response.json()
                 
                 if (!registerStatus.success) {

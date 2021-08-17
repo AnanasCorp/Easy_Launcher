@@ -27,7 +27,7 @@ const AddShortcut = () => {
         tab: tab.id,
         uid: userData.uid })
     };
-    const response = await fetch(`${utils.getServerUrl()}/addShortcut`, requestOptions);
+    const response = await fetch(`${utils.getServerUrl()}addShortcut`, requestOptions);
     const data = await response.json()
 
     if (data.success) {
