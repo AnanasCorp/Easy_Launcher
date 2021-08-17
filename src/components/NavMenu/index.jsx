@@ -17,7 +17,7 @@ const NavMenu = () => {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' }
     };
-    const response = await fetch(`${secrets.REACT_APP_API_URL}/getTabs/${userData.uid}`, requestOptions);
+    const response = await fetch(`${getServerUrl().REACT_APP_API_URL}/getTabs/${userData.uid}`, requestOptions);
     const data = await response.json()
 
     setTabs(data)
@@ -43,7 +43,7 @@ const NavMenu = () => {
         uid: userData.uid,
         tid: id})
     };
-    fetch(`${secrets.REACT_APP_API_URL}/removeTab`, requestOptions);
+    fetch(`${getServerUrl().REACT_APP_API_URL}/removeTab`, requestOptions);
     window.location.reload() 
   }
 
