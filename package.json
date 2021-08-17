@@ -2,7 +2,7 @@
   "name": "easy-launcher",
   "version": "1.0.0",
   "private": false,
-  "homepage": "https://ananascorp.github.io/Easy_Launcher",
+  "homepage": "https://ananascorp.github.io/Easy_Launcher/",
   "dependencies": {
     "node-sass": "^4.14.1",
     "react": "^16.5.2",
