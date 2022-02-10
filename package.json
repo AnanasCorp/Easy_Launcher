@@ -4,7 +4,7 @@
   "private": false,
   "homepage": "https://ananascorp.github.io/Easy_Launcher/",
   "dependencies": {
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-hook-form": "^3.28.1",
